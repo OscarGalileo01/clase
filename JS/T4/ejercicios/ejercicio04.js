@@ -5,41 +5,29 @@ caracteres de entra. Cuando se pase toda la cadena de un cuadro a otro, mostrar 
 pasada". */
 
 const entra = document.querySelector(".entra")
-let sale = document.querySelector(".sale").innerHTML
-const a = document.querySelector(".sale")
+let sale = document.querySelector(".sale")
 
-let index = 0
-let legnthSale = sale.length-1
 
-console.log(sale);
+/* let index = 0
+let legnthSale = sale.length-1 */
+
+let arraySale = [...sale.innerHTML]
+let arrayEntra = []
+const digitosPalabra = sale.innerHTML.length;
+
 document.querySelector(".btn").addEventListener("click", function(){
 
-   
-
-     entra.innerHTML+=sale.charAt(sale.length-1) //Introduce 
-    a.innerHTML = sale.substring(0, index)
-    
-
-
-    index--
+  if(arrayEntra.length === digitosPalabra){
+    alert("PALABRA COMPLETA")
+  }else{
+    arrayEntra.unshift(arraySale.shift()) //Shift devuelve primera letra de sale, y unshift lo coloca al principio del array entra
+    /* Comprobaciones */
+    console.log("Entra:      " + arrayEntra);
+    console.log("Sale:       " + arraySale);
  
-
-     entra.innerHTML += sale.charAt(index)
-    index++ 
-    
-    
-    //a.innerHTML = sale.substring(0,legnthSale)
-
-
-
-    
-   /*  legnthSale-- */
-    
-
-
-    
-
-
-
-
+    //Añadimos al html la primera pos de arrayEntra
+    entra.innerHTML += arrayEntra[0] 
+    //Eliminamos primera letra de sale
+   sale.innerHTML = sale.innerHTML.substring(1,sale.innerHTML.length)
+  }
 })
